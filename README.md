@@ -28,21 +28,21 @@
 - [X] Program 26
 - [X] Program 27
 - [X] Program 28
-- [ ] Program 29
-- [ ] Program 30
-- [ ] Program 31
-- [ ] Program 32
-- [ ] Program 33
-- [ ] Program 34
-- [ ] Program 35
-- [ ] Program 36
-- [ ] Program 37
-- [ ] Program 38
-- [ ] Program 39
-- [ ] Program 40
-- [ ] Program 41
-- [ ] Program 42
-- [ ] Program 43
+- [] Program 29
+- [X] Program 30
+- [X] Program 31
+- [X] Program 32
+- [X] Program 33
+- [X] Program 34
+- [X] Program 35
+- [X] Program 36
+- [X] Program 37
+- [X] Program 38
+- [X] Program 39
+- [X] Program 40
+- [X] Program 41
+- [X] Program 42
+- [X] Program 43
 - [ ] Program 44
 - [ ] Program 45
 - [ ] Program 46
