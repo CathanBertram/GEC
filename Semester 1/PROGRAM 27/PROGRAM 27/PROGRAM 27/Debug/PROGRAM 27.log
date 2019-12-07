@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\OneDrive - Staffordshire University\PROGRAM 27\PROGRAM 27\PROGRAM 27\Source.cpp(12,6): warning C4101: 'length1': unreferenced local variable
+D:\OneDrive - Staffordshire University\PROGRAM 27\PROGRAM 27\PROGRAM 27\Source.cpp(13,6): warning C4101: 'length2': unreferenced local variable
+  PROGRAM 27.vcxproj -> D:\OneDrive - Staffordshire University\PROGRAM 27\PROGRAM 27\Debug\PROGRAM 27.exe
