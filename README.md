@@ -28,7 +28,7 @@
 - [X] Program 26
 - [X] Program 27
 - [X] Program 28
-- [] Program 29
+- [ ] Program 29
 - [X] Program 30
 - [X] Program 31
 - [X] Program 32
