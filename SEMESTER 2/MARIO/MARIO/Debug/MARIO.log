@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\b012521i\OneDrive - Staffordshire University\GAMES ENGINE CREATION\SEMESTER 2\MARIO\MARIO\main.cpp(89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\OneDrive - Staffordshire University\GAMES ENGINE CREATION\SEMESTER 2\MARIO\MARIO\main.cpp(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\OneDrive - Staffordshire University\GAMES ENGINE CREATION\SEMESTER 2\MARIO\MARIO\main.cpp(95): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\OneDrive - Staffordshire University\GAMES ENGINE CREATION\SEMESTER 2\MARIO\MARIO\main.cpp(98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Timer.cpp
+  Generating Code...
+  MARIO.vcxproj -> C:\Users\b012521i\OneDrive - Staffordshire University\GAMES ENGINE CREATION\SEMESTER 2\MARIO\Debug\MARIO.exe
