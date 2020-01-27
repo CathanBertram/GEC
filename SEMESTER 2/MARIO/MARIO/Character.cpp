@@ -32,6 +32,26 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	//Adds Gravity Force
+	AddGravity(deltaTime);
+	
+	//Jump Force Change
+	if (mJumping)
+	{
+		//Adjust Position
+		mPosition.y -= mJumpForce * deltaTime;
+
+		//Reduce Jump Force
+		mJumpForce -= JUMP_FORCE_DECREMENT * deltaTime;
+
+		//Check If Jump Force = 0
+		if (mJumpForce <= 0.0f)
+		{
+			mJumping = false;
+		}
+	}
+
+	//Changes Character Direction
 	if (mMovingLeft)
 	{
 		MoveLeft(deltaTime);
@@ -40,6 +60,8 @@ void Character::Update(float deltaTime, SDL_Event e)
 	{
 		MoveRight(deltaTime);
 	}
+
+	//Player Input
 	switch (e.type)
 	{
 	case SDL_KEYDOWN:
@@ -51,8 +73,11 @@ void Character::Update(float deltaTime, SDL_Event e)
 		case SDLK_RIGHT:
 			mMovingRight = true;
 			break;
+		case SDLK_UP:
+			Jump();
+			break;
 		}
-	
+		
 		break;
 	case SDL_KEYUP:
 		switch (e.key.keysym.sym)
@@ -75,6 +100,28 @@ void Character::SetPosition(Vector2D newPosition)
 Vector2D Character::GetPosition()
 {
 	return mPosition;
+}
+
+void Character::Jump()
+{
+	if (!mJumping)
+	{
+		mJumpForce = INITIAL_JUMP_FORCE;
+		mJumping = true;
+		mCanJump = false;
+	}
+}
+
+void Character::AddGravity(float deltaTime)
+{
+	if (mPosition.y < SCREEN_HEIGHT - 42)
+	{
+	mPosition.y += gravity*deltaTime;
+	}
+	else
+	{
+		mCanJump = true;
+	}
 }
 
 void Character::MoveLeft(float deltaTime)

@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <iostream>
 #include "Commons.h"
+#include "Main.h"
 
 class Texture2D;
 
@@ -24,8 +25,9 @@ private:
 	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;
-	const int JUMP_FORCE_DECREMENT = 1.0f;
-	const int INITIAL_JUMP_FORCE = 400.0f;
+	float gravity = 700.0f;
+	const float JUMP_FORCE_DECREMENT = 1500.0f;
+	const float INITIAL_JUMP_FORCE = 1400.0f;
 
 	void Jump();
 	void AddGravity(float deltaTime);
