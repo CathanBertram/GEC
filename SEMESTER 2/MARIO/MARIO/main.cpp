@@ -1,24 +1,31 @@
 #include "Main.h"
+#include "Texture2D.h"
+#include "Commons.h"
+#include "GameScreenManager.h"
 
 void CloseSDL();
 bool InitSDL();
-void Draw();
+void Render();
 void Update();
 
+GameScreenManager* gameScreenManager;
+Uint32 gOldTime;
+
 SDL_Window* gWindow = NULL;
+SDL_Renderer* gRenderer;
 
 bool quit = false;
 
 int main(int argc, char* agrs[])
 {
-	frame = 0;
-	fpsTimer.start();
 	//Game Loop
 	if (InitSDL())
 	{
+		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
+		gOldTime = SDL_GetTicks();
 		while (!quit)
 		{
-			capTimer.start();
+			Render();
 			Update();
 		}
 	}
@@ -33,16 +40,10 @@ void CloseSDL()
 	gWindow = NULL;
 	IMG_Quit();
 	SDL_Quit();
-}
-
-void Draw() 
-{
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderFillRect(renderer, NULL);
-	SDL_FillRect(SDL_GetWindowSurface(gWindow), NULL, SDL_MapRGB(SDL_GetWindowSurface(gWindow)->format, 0, 0, 0));
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	SDL_RenderFillRect(renderer, &rect);
-	SDL_RenderPresent(renderer);
+	SDL_DestroyRenderer(gRenderer);
+	gRenderer = NULL;
+	delete gameScreenManager;
+	gameScreenManager = NULL;
 }
 
 bool InitSDL()
@@ -66,12 +67,37 @@ bool InitSDL()
 		}
 	}
 
-	renderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+	if (gRenderer !=NULL)
+	{
+		int imageFlags = IMG_INIT_PNG;
+		if (!IMG_Init(imageFlags)&&imageFlags)
+		{
+			cout << "SDL_Image could not initialise. Error: " << IMG_GetError();
+			return false;
+		}
+	}
+	else
+	{
+		cout << "Renderer could not initialise. Error: " << SDL_GetError();
+		return false;
+	}
 	return true;
+}
+
+void Render()
+{
+	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
+	SDL_RenderClear(gRenderer);
+
+	gameScreenManager->Render();
+
+	SDL_RenderPresent(gRenderer);
 }
 
 void Update()
 {
+	Uint32 newTime = SDL_GetTicks();
 	//Event Handler
 	SDL_Event e;
 	SDL_PollEvent(&e);
@@ -85,30 +111,13 @@ void Update()
 		case SDLK_ESCAPE:
 			quit = true;
 			return;
-		case SDLK_w:
-			rect.y = rect.y - speed;
-			break;
-		case SDLK_s:
-			rect.y = rect.y + speed;
-			break;
-		case SDLK_d:
-			rect.x = rect.x + speed;
-			break;
-		case SDLK_a:
-			rect.x = rect.x - speed;
-			break;
+		case SDLK_SPACE:
+			gameScreenManager->ChangeScreen(SCREEN_LEVEL1);
 		}
 	}
-	float avgFPS = frame / (fpsTimer.getTicks() / 1000.f);
-	if (avgFPS > 2000000)
-	{
-		avgFPS = 0;
-	}
-	int frameTicks = capTimer.getTicks();
-	if (frameTicks < SCREEN_TICKS_PER_FRAME)
-	{
-		SDL_Delay(SCREEN_TICKS_PER_FRAME - frameTicks);
-	}
-	Draw();
+	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
+	gOldTime = newTime;
 	return;
 }
+
+
