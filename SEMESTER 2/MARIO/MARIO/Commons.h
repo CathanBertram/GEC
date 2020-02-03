@@ -34,3 +34,49 @@ struct Vector2D
 	}
 };
 
+struct Rect2D
+{
+	float x;
+	float y;
+	float w;
+	float h;
+
+	Rect2D()
+	{
+		x = 0.0f;
+		y = 0.0f;
+		w = 0.0f;
+		h = 0.0f;
+
+	}
+
+	Rect2D(float _x, float _y, float _w, float _h)
+	{
+		x = _x;
+		y = _y;
+		w = _w;
+		h = _h;
+	}
+};
+
+struct Circle2D
+{
+	double radius;
+	Vector2D position;
+
+	Circle2D()
+	{
+		radius = 0.0f;
+		position.x = 0.0f;
+		position.y = 0.0f;
+	}
+
+	Circle2D(double _radius, Vector2D pos)
+	{
+		radius = _radius;
+		position.x = pos.x;
+		position.y = pos.y;
+	}
+};
+
+

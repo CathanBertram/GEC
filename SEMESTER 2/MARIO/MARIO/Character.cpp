@@ -11,10 +11,12 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mMovingLeft = false;
 	mMovingRight = false;
 	speed = 100;
+	mCollisionRadius = 15.0f;
 }
 
 Character::~Character()
 {
+	delete mRenderer;
 	mRenderer = NULL;
 }
 
@@ -61,37 +63,12 @@ void Character::Update(float deltaTime, SDL_Event e)
 		MoveRight(deltaTime);
 	}
 
-	//Player Input
-	switch (e.type)
-	{
-	case SDL_KEYDOWN:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			mMovingLeft = true;
-			break;
-		case SDLK_RIGHT:
-			mMovingRight = true;
-			break;
-		case SDLK_UP:
-			Jump();
-			break;
-		}
-		
-		break;
-	case SDL_KEYUP:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			mMovingLeft = false;
-			break;
-		case SDLK_RIGHT:
-			mMovingRight = false;
-			break;
-		}
-		break;
-	}
 }
+float Character::GetCollisionRadius()
+{
+	return mCollisionRadius;
+}
+
 void Character::SetPosition(Vector2D newPosition)
 {
 	mPosition = newPosition;
@@ -100,6 +77,11 @@ void Character::SetPosition(Vector2D newPosition)
 Vector2D Character::GetPosition()
 {
 	return mPosition;
+}
+
+Rect2D Character::GetCollisionBox()
+{
+	return Rect2D(mPosition.x, mPosition.y, mTexture->GetWidth(), mTexture->GetHeight());
 }
 
 void Character::Jump()
