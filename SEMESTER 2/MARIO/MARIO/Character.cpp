@@ -1,7 +1,7 @@
 #include "Character.h"
 #include "Texture2D.h"
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition)
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map)
 {
 	mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);
@@ -12,6 +12,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mMovingRight = false;
 	speed = 100;
 	mCollisionRadius = 15.0f;
+	mCurrentLevelMap = map;
 }
 
 Character::~Character()
@@ -34,8 +35,17 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	int centralXPosition = (int)(mPosition.x + (mTexture->GetWidth() * 0.5f)) / TILE_WIDTH;
+	int footPosition = (int)(mPosition.y + mTexture->GetHeight()) / TILE_HEIGHT;
+	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition)==0)
+	{
 	//Adds Gravity Force
 	AddGravity(deltaTime);
+	}
+	else
+	{
+		mCanJump = true;
+	}
 	
 	//Jump Force Change
 	if (mJumping)

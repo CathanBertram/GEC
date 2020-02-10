@@ -7,6 +7,7 @@
 #include "CharacterLuigi.h"
 #include "CharacterMario.h"
 #include "Collisions.h"
+#include "LevelMap.h"
 
 class Character;
 class Texture2D;
@@ -28,5 +29,7 @@ private:
 	Vector2D mPos;
 	Vector2D lPos;
 	bool SetUpLevel();
+	void SetLevelMap();
+	LevelMap* mLevelMap;
 };
 

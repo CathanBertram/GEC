@@ -5,6 +5,7 @@
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
 {
 	SetUpLevel();
+	mLevelMap = NULL;
 }
 
 GameScreenLevel1::~GameScreenLevel1()
@@ -44,12 +45,35 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 bool GameScreenLevel1::SetUpLevel()
 {
 	mBackgroundTexture = new Texture2D(mRenderer);
-	if (!mBackgroundTexture->LoadFromFile("Images/download.png"))
+	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundMB.png"))
 	{
 		std::cout << "Failed to load background texture!";
 		return false;
 	}
-	mario = new CharacterMario(mRenderer, "Images/Mario.png", Vector2D(64, 330));
-	luigi = new CharacterLuigi(mRenderer, "Images/Luigi.png", Vector2D(448, 330));
+	SetLevelMap();
+	mario = new CharacterMario(mRenderer, "Images/Mario.png", Vector2D(64, 330), mLevelMap);
+	luigi = new CharacterLuigi(mRenderer, "Images/Luigi.png", Vector2D(448, 330), mLevelMap);
 	return false;
+}
+
+void GameScreenLevel1::SetLevelMap()
+{
+	int map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
+									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0 },
+									{ 1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1 },
+									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
+									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+									{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };
+	if (mLevelMap != NULL)
+	{
+		delete mLevelMap;
+	}
+	mLevelMap = new LevelMap(map);
 }
