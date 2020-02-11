@@ -10,6 +10,8 @@ public:
 
 	int GetTileAt(unsigned int h, unsigned int w);
 
+	void ChangeTileAt(unsigned int h, unsigned int w, unsigned int newValue);
+
 private:
 	int** mMap;
 };
