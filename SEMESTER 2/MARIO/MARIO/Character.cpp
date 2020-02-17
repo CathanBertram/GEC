@@ -10,7 +10,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mFacingDirection = FACING_RIGHT;
 	mMovingLeft = false;
 	mMovingRight = false;
-	speed = 100;
+	speed = 250;
 	mCollisionRadius = 15.0f;
 	mCurrentLevelMap = map;
 }
@@ -92,6 +92,11 @@ Vector2D Character::GetPosition()
 Rect2D Character::GetCollisionBox()
 {
 	return Rect2D(mPosition.x, mPosition.y, mTexture->GetWidth(), mTexture->GetHeight());
+}
+
+void Character::CancelJump()
+{
+	mJumpForce = 0.0f;
 }
 
 void Character::Jump()

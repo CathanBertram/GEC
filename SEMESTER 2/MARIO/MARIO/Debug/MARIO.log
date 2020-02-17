@@ -1,2 +1,3 @@
 ﻿  GameScreenLevel1.cpp
-  MARIO.vcxproj -> D:\GITHUB\GEC\SEMESTER 2\MARIO\Debug\MARIO.exe
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.h(15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\Debug\MARIO.exe

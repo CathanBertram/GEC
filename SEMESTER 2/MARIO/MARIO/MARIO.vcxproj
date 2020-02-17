@@ -135,6 +135,7 @@
     <ClCompile Include="GameScreenManager.cpp" />
     <ClCompile Include="LevelMap.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PowBlock.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="GameScreenLevel1.h" />
     <ClInclude Include="GameScreenManager.h" />
     <ClInclude Include="LevelMap.h" />
+    <ClInclude Include="PowBlock.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Timer.h" />

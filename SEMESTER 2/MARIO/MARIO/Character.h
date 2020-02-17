@@ -20,6 +20,8 @@ public:
 	void SetPosition(Vector2D newPosition);
 	Vector2D GetPosition();
 	Rect2D GetCollisionBox();
+	bool IsJumping() { return mJumping; };
+	void CancelJump();
 protected:
 	FACING mFacingDirection;
 	bool mMovingLeft;
@@ -38,8 +40,8 @@ protected:
 	float mCollisionRadius;
 
 private:
-	float speed;
 	bool mJumping;
+	float speed;
 	bool mCanJump;
 	float mJumpForce;
 

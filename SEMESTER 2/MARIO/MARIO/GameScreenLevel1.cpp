@@ -1,6 +1,7 @@
 #include <iostream>
 #include "GameScreenLevel1.h"
 #include "Texture2D.h"
+#include "PowBlock.h"
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
 {
@@ -15,17 +16,24 @@ GameScreenLevel1::~GameScreenLevel1()
 	mario = NULL;
 	delete luigi;
 	luigi = NULL;
+	delete mPowBlock;
+	mPowBlock = NULL;
 }
 
 void GameScreenLevel1::Render()
 {
-	mBackgroundTexture->Render(Vector2D(), SDL_FLIP_NONE);
+	mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE);
 	mario->Render();
 	luigi->Render();
+	mPowBlock->Render();
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
+	if (mScreenshake)
+	{
+		ShakeScreen(deltaTime);
+	}
 	mPos = mario->GetPosition();
 	lPos = luigi->GetPosition();
 	mario->Update(deltaTime, e);
@@ -40,6 +48,35 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		mario->SetPosition(mPos);
 		luigi->SetPosition(lPos);
 	}
+	UpdatePowBlock();
+}
+
+void GameScreenLevel1::UpdatePowBlock()
+{
+	if (Collisions::Instance()->Box(mario->GetCollisionBox(), mPowBlock->GetCollisionBox()))
+	{
+		if (mPowBlock->IsAvailable())
+		{
+			if (mario->IsJumping())
+			{
+				DoScreenshake();
+				mPowBlock->TakeAHit();
+				mario->CancelJump();
+			}
+		}
+	}
+	if (Collisions::Instance()->Box(luigi->GetCollisionBox(), mPowBlock->GetCollisionBox()))
+	{
+		if (mPowBlock->IsAvailable())
+		{
+			if (luigi->IsJumping())
+			{
+				DoScreenshake();
+				mPowBlock->TakeAHit();
+				luigi->CancelJump();
+			}
+		}
+	}
 }
 
 bool GameScreenLevel1::SetUpLevel()
@@ -53,6 +90,9 @@ bool GameScreenLevel1::SetUpLevel()
 	SetLevelMap();
 	mario = new CharacterMario(mRenderer, "Images/Mario.png", Vector2D(64, 330), mLevelMap);
 	luigi = new CharacterLuigi(mRenderer, "Images/Luigi.png", Vector2D(448, 330), mLevelMap);
+	mPowBlock = new PowBlock(mRenderer, mLevelMap);
+	mScreenshake = false;
+	mBackgroundYPos = 0.0f;
 	return false;
 }
 
