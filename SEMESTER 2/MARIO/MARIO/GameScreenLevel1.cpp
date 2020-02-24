@@ -22,7 +22,7 @@ GameScreenLevel1::~GameScreenLevel1()
 
 void GameScreenLevel1::Render()
 {
-	mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE);
+	mBackgroundTexture->Render(Vector2D(0, mBackgroundYPos), SDL_FLIP_NONE, mBackgroundYPos);
 	mario->Render();
 	luigi->Render();
 	mPowBlock->Render();

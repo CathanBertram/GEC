@@ -36,6 +36,7 @@ void GameScreen::ShakeScreen(float deltaTime)
 	{
 		mScreenshake = false;
 		mBackgroundYPos = 0.0f;
+		mWobble = 0.0f;
 	}
 
 }

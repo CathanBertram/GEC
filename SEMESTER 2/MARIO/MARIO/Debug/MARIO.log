@@ -1,9 +1,2 @@
-﻿  PowBlock.cpp
-C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(36): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(37): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(37): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+﻿  GameScreenLevel1.cpp
   MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\Debug\MARIO.exe
