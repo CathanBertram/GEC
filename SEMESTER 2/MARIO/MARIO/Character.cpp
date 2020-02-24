@@ -14,9 +14,6 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mCollisionRadius = 15.0f;
 	mCurrentLevelMap = map;
 
-	mSingleSpriteWidth = mTexture->GetWidth() / 12;
-	mSingleSpriteHeight = mTexture->GetHeight();
-
 	frame = 1;
 }
 
@@ -95,38 +92,11 @@ void Character::Update(float deltaTime, SDL_Event e)
 	{
 		moving = false;
 	}
-
-	if (mJumping && !mFalling)
-	{
-		slice = 5;
-	}
-	else if (mFalling)
-	{
-		slice = 6;
-	}
-	else if (moving == true)
-	{
-		frame += deltaTime * 10;
-		if (frame > cFrameTime)
-		{
-			slice++;
-			frame = 0;
-		}
-		if (slice >= 5)
-		{
-			slice = 1;
-		}
-	}
-	else
-	{
-		frame = 0;
-		slice = 0;
-	}
 	
 }
 float Character::GetCollisionRadius()
 {
-	return mCollisionRadius;
+	return mSingleSpriteWidth/2;
 }
 
 void Character::SetPosition(Vector2D newPosition)

@@ -4,6 +4,7 @@
 #include "Commons.h"
 #include "Main.h"
 #include "LevelMap.h"
+#include "Texture2D.h"
 
 class Texture2D;
 
@@ -42,6 +43,7 @@ protected:
 	SDL_Renderer* mRenderer;
 	Vector2D mPosition;
 	Texture2D* mTexture;
+	Circle2D mCircle;
 	float mCollisionRadius;
 
 	//Spritesheet Variables
@@ -51,12 +53,12 @@ protected:
 	int slice; //Slice From Spritesheet
 	bool moving;
 	const int cFrameTime = 1; //Time For Anim Loop
-
-private:
-	bool mJumping;
 	float speed;
+	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;
+
+private:
 
 	LevelMap* mCurrentLevelMap;
 };
