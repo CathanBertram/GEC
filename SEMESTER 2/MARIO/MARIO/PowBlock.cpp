@@ -49,5 +49,6 @@ void PowBlock::TakeAHit()
 		mLevelMap->ChangeTileAt(8, 7, 0);
 		mLevelMap->ChangeTileAt(8, 8, 0);
 	}
+	mSingleSpriteHeight -= 8;
 }
 
