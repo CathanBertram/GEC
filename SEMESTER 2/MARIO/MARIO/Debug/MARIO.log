@@ -1,2 +1,47 @@
-﻿  GameScreenLevel1.cpp
-  MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\Debug\MARIO.exe
+﻿  Character.cpp
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(17,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(18,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(25,18): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(31,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(32,45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(32,45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(32,65): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(32,65): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(33,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(33,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(33,83): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+  CharacterLuigi.cpp
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(33,83): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\CharacterLuigi.cpp(10,19): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  CharacterMario.cpp
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\CharacterMario.cpp(10,19): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  Collisions.cpp
+  GameScreen.cpp
+  GameScreenIntro.cpp
+  GameScreenLevel1.cpp
+  GameScreenManager.cpp
+  LevelMap.cpp
+  main.cpp
+  PowBlock.cpp
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(17,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(18,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(35,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(36,46): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(36,46): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(36,66): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(36,66): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(37,64): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(37,64): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(37,84): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+  Texture2D.cpp
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\PowBlock.cpp(37,84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Texture2D.cpp(58,38): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Texture2D.cpp(58,38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Texture2D.cpp(58,52): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+  Timer.cpp
+  Generating Code...
+D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Texture2D.cpp(58,52): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  MARIO.vcxproj -> D:\GITHUB\GEC\SEMESTER 2\MARIO\Debug\MARIO.exe
