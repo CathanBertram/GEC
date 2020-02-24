@@ -13,6 +13,11 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	speed = 250;
 	mCollisionRadius = 15.0f;
 	mCurrentLevelMap = map;
+
+	mSingleSpriteWidth = mTexture->GetWidth() / 12;
+	mSingleSpriteHeight = mTexture->GetHeight();
+
+	frame = 1;
 }
 
 Character::~Character()
@@ -23,19 +28,23 @@ Character::~Character()
 
 void Character::Render()
 {
+	int left = mSingleSpriteWidth * slice;
+	SDL_Rect portionOfSpritesheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
+	SDL_Rect destRect = { (int)(mPosition.x),(int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
+	
 	if (mFacingDirection==FACING_RIGHT)
 	{
-		mTexture->Render(mPosition, SDL_FLIP_NONE);
+		mTexture->Render(portionOfSpritesheet, destRect, SDL_FLIP_HORIZONTAL);
 	}
 	if (mFacingDirection == FACING_LEFT)
 	{
-		mTexture->Render(mPosition, SDL_FLIP_HORIZONTAL);
+		mTexture->Render(portionOfSpritesheet, destRect, SDL_FLIP_NONE);
 	}
 }
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
-	int centralXPosition = (int)(mPosition.x + (mTexture->GetWidth() * 0.5f)) / TILE_WIDTH;
+	int centralXPosition = (int)(mPosition.x + ((mTexture->GetWidth()/12) * 0.5f)) / TILE_WIDTH;
 	int footPosition = (int)(mPosition.y + mTexture->GetHeight()) / TILE_HEIGHT;
 	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition)==0)
 	{
@@ -56,23 +65,64 @@ void Character::Update(float deltaTime, SDL_Event e)
 		//Reduce Jump Force
 		mJumpForce -= JUMP_FORCE_DECREMENT * deltaTime;
 
+		if (gravity > mJumpForce)
+		{
+			mFalling = true;
+		}
 		//Check If Jump Force = 0
 		if (mJumpForce <= 0.0f)
 		{
 			mJumping = false;
 		}
 	}
+	else
+	{
+		mFalling = false;
+	}
 
 	//Changes Character Direction
 	if (mMovingLeft)
 	{
+		moving = true;
 		MoveLeft(deltaTime);
 	}
 	else if (mMovingRight)
 	{
+		moving = true;
 		MoveRight(deltaTime);
 	}
+	else
+	{
+		moving = false;
+	}
 
+	if (mJumping && !mFalling)
+	{
+		slice = 5;
+	}
+	else if (mFalling)
+	{
+		slice = 6;
+	}
+	else if (moving == true)
+	{
+		frame += deltaTime * 10;
+		if (frame > cFrameTime)
+		{
+			slice++;
+			frame = 0;
+		}
+		if (slice >= 5)
+		{
+			slice = 1;
+		}
+	}
+	else
+	{
+		frame = 0;
+		slice = 0;
+	}
+	
 }
 float Character::GetCollisionRadius()
 {
@@ -87,11 +137,6 @@ void Character::SetPosition(Vector2D newPosition)
 Vector2D Character::GetPosition()
 {
 	return mPosition;
-}
-
-Rect2D Character::GetCollisionBox()
-{
-	return Rect2D(mPosition.x, mPosition.y, mTexture->GetWidth(), mTexture->GetHeight());
 }
 
 void Character::CancelJump()

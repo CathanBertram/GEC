@@ -19,7 +19,10 @@ public:
 
 	void SetPosition(Vector2D newPosition);
 	Vector2D GetPosition();
-	Rect2D GetCollisionBox();
+	Rect2D GetCollisionBox()
+	{
+		return Rect2D(mPosition.x, mPosition.y, mSingleSpriteWidth, mSingleSpriteHeight);
+	};
 	bool IsJumping() { return mJumping; };
 	void CancelJump();
 protected:
@@ -34,10 +37,20 @@ protected:
 	void AddGravity(float deltaTime);
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
+	bool mFalling;
+
 	SDL_Renderer* mRenderer;
 	Vector2D mPosition;
 	Texture2D* mTexture;
 	float mCollisionRadius;
+
+	//Spritesheet Variables
+	float mSingleSpriteWidth;
+	float mSingleSpriteHeight;
+	float frame;
+	int slice; //Slice From Spritesheet
+	bool moving;
+	const int cFrameTime = 1; //Time For Anim Loop
 
 private:
 	bool mJumping;
