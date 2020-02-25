@@ -24,7 +24,7 @@ void GameScreenIntro::Update(float deltaTime, SDL_Event e)
 bool GameScreenIntro::SetUpLevel()
 {
 	mBackgroundTexture = new Texture2D(mRenderer);
-	if (!mBackgroundTexture->LoadFromFile("Images/Seven.png"))
+	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundSplash.png"))
 	{
 		std::cout << "Failted to load background texture!";
 		return false;
