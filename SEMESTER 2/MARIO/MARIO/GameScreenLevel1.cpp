@@ -35,6 +35,7 @@ void GameScreenLevel1::Render()
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
+	UpdateEnemies(deltaTime, e);
 	if (mScreenshake)
 	{
 		ShakeScreen(deltaTime);
@@ -53,11 +54,10 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 		mario->SetPosition(mPos);
 		luigi->SetPosition(lPos);
 	}
-	UpdateEnemies(deltaTime, e);
-	UpdatePowBlock();
+	UpdatePowBlock(deltaTime);
 }
 
-void GameScreenLevel1::UpdatePowBlock()
+void GameScreenLevel1::UpdatePowBlock(float deltaTime)
 {
 	if (Collisions::Instance()->Box(mario->GetCollisionBox(), mPowBlock->GetCollisionBox()))
 	{
@@ -70,7 +70,7 @@ void GameScreenLevel1::UpdatePowBlock()
 				mario->CancelJump();
 				for (unsigned int i = 0; i < mKoopas.size(); i++)
 				{
-					mKoopas[i]->Jump();
+					mKoopas[i]->Jump(deltaTime);
 				}
 			}
 		}
@@ -86,7 +86,7 @@ void GameScreenLevel1::UpdatePowBlock()
 				luigi->CancelJump();
 				for (unsigned int i = 0; i < mKoopas.size(); i++)
 				{
-					mKoopas[i]->Jump();
+					mKoopas[i]->Jump(deltaTime);
 				}
 			}
 		}
@@ -106,6 +106,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 					mKoopas[i]->GetPosition().x > SCREEN_WIDTH - (float)(mKoopas[i]->GetCollisionBox().w*0.55f))
 				{
 					mKoopas[i]->SetAlive(false);
+					mKoopas[i]->Jump(deltaTime);
 				}
 			}
 			
@@ -114,7 +115,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			if ((mKoopas[i]->GetPosition().y > 0.0f || mKoopas[i]->GetPosition().y <= 64.0f) && (mKoopas[i]->GetPosition().x < 64.0f || mKoopas[i]->GetPosition().x > SCREEN_WIDTH - 96.0f))
 			{
 				//Ignore Collisions if behind pipe
-				mKoopas[i]->Jump();
+				//mKoopas[i]->Jump(deltaTime);
 			}
 			else
 			{

@@ -1,13 +1,13 @@
-﻿  Character.cpp
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(22,18): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(28,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(29,45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(29,45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(29,65): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(29,65): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(30,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(30,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(30,83): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\GITHUB\GEC\SEMESTER 2\MARIO\MARIO\Character.cpp(30,83): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  MARIO.vcxproj -> D:\GITHUB\GEC\SEMESTER 2\MARIO\Debug\MARIO.exe
+﻿  CharacterKoopa.cpp
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.h(27): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.cpp(87): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.cpp(88): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.cpp(88): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.cpp(89): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.cpp(89): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  GameScreenLevel1.cpp
+C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\MARIO\CharacterKoopa.h(27): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+  MARIO.vcxproj -> C:\Users\b012521i\Documents\GitHub\GEC\SEMESTER 2\MARIO\Debug\MARIO.exe
