@@ -24,7 +24,7 @@ public:
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
 
-	void UpdatePowBlock();
+	void UpdatePowBlock(float deltaTime);
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
 private:

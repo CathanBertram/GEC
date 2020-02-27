@@ -7,37 +7,40 @@ CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, Ve
 	mPosition = startPosition;
 
 	mInjured = false;
+	mJumping = false;
+	flippable = true;
 
 	mSingleSpriteWidth = mTexture->GetWidth() / 15;
 	mSingleSpriteHeight = mTexture->GetHeight();
 	slice = 1;
+
+	flipCooldown = 0.0f;
 }
 
 CharacterKoopa::~CharacterKoopa()
 {
 }
 
-void CharacterKoopa::TakeDamage()
+void CharacterKoopa::TakeDamage(float deltaTime)
 {
 	mInjured = true;
 	mInjuredTime = INJURED_TIME;
-	Jump();
+	Jump(deltaTime);
 }
 
-void CharacterKoopa::Jump()
+void CharacterKoopa::Jump(float deltaTime)
 {
 	if (!mJumping)
 	{
+		Flip(deltaTime);	
 		mJumpForce = INITIAL_JUMP_FORCE_SMALL;
 		mJumping = true;
 		mCanJump = false;
-		Flip();
 	}
 }
 
 void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 {
-	Character::Update(deltaTime, e);
 	if (!mInjured)
 	{
 		if (mFacingDirection == FACING_LEFT)
@@ -47,8 +50,8 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 		}
 		else if (mFacingDirection == FACING_RIGHT)
 		{
-			mMovingLeft = false;
 			mMovingRight = true;
+			mMovingLeft = false;
 		}
 	}
 	else
@@ -59,7 +62,7 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 		mInjuredTime -= deltaTime;
 		if (mInjuredTime <= 0)
 		{
-			FlipRightWayUp();
+			FlipRightWayUp(deltaTime);
 		}
 	}
 	if (mMovingLeft || mMovingRight)
@@ -75,6 +78,7 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 			slice = 1;
 		}
 	}
+	Character::Update(deltaTime, e);
 
 }
 
@@ -103,20 +107,33 @@ void CharacterKoopa::SetAlive(bool alive)
 {
 }
 
-void CharacterKoopa::FlipRightWayUp()
+void CharacterKoopa::FlipRightWayUp(float deltaTime)
 {
 	mInjured = false;
-	Jump();
+	Jump(deltaTime);
 }
 
-void CharacterKoopa::Flip()
+void CharacterKoopa::Flip(float deltaTime)
 {
-	if (mFacingDirection == FACING_LEFT)
+	if (flippable)
 	{
-		mFacingDirection == FACING_RIGHT;
+		if (mFacingDirection == FACING_LEFT)
+		{
+			mFacingDirection = FACING_RIGHT;
+		}
+		else if (mFacingDirection == FACING_RIGHT)
+		{
+			mFacingDirection = FACING_LEFT;
+		}
+		flippable = false;
 	}
-	else if (mFacingDirection == FACING_RIGHT)
+	else
 	{
-		mFacingDirection == FACING_LEFT;
+		flipCooldown += deltaTime;
+		if (flipCooldown >= cFlipCooldown)
+		{
+			flippable = true;
+			flipCooldown = 0;
+		}
 	}
 }

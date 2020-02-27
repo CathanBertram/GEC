@@ -30,9 +30,9 @@ protected:
 	FACING mFacingDirection;
 	bool mMovingLeft;
 	bool mMovingRight;
-	float gravity = 700.0f;
-	const float JUMP_FORCE_DECREMENT = 1500.0f;
-	const float INITIAL_JUMP_FORCE = 1400.0f;
+	float gravity = 300.0f;
+	const float JUMP_FORCE_DECREMENT = 1000.0f;
+	const float INITIAL_JUMP_FORCE = 800.0f;
 
 	void Jump();
 	void AddGravity(float deltaTime);
